@@ -9,7 +9,9 @@ def create_app():
     #importing blueprints
     from .views import views#5 
     from .auth import auth#6
-
-    app.register_blueprint(views,url_prefix='/')
-    app.register_blueprint(auth,url_prefix='/')
+    #registering blueprint
+    app.register_blueprint(views,url_prefix='/')#7
+    app.register_blueprint(auth,url_prefix='/')#8
+    #url prefix decides what u need to put before your registered blue print url
+     
     return app#4
