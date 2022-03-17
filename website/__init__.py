@@ -1,6 +1,7 @@
 #make website folder as python package
 #need to install flask,flask-login,flask-sqlalchemy
 from flask import Flask#1
+
 from flask_sqlalchemy import SQLAlchemy#for database
 from os import path
 
@@ -8,8 +9,10 @@ db = SQLAlchemy()#database object
 DB_NAME = "database.db"#db name
 
 def create_app():
+
     app=Flask(__name__)#2 initializing flask
     app.config['SECRET_KEY']='hello'#3 config variable for encrypt our website
+    
     app.config['SQLALCHMEY_DATABASE_URI']=f'sqlite:///{DB_NAME}'#where the database is located at f'sqlite:///{DB_NAME}'
     db.init_app(app)#initialize the app
 
@@ -27,6 +30,7 @@ def create_app():
     from .models import User,Note#importing database schema
 
     create_database(app)
+
     return app#4
 
 #
